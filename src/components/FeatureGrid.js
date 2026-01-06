@@ -5,7 +5,9 @@ export default function FeatureGrid({ backgroundColor,
   title,
   subtitle,
   description,
+  subDescription,
   features,
+  benefits,
   cta,
   image, onChange }) {
 
@@ -16,7 +18,9 @@ export default function FeatureGrid({ backgroundColor,
     title,
     subtitle,
     description,
+    subDescription,
     features,
+    benefits,
     cta,
     image
   });
@@ -78,9 +82,20 @@ export default function FeatureGrid({ backgroundColor,
                 <div className="mb-4">{initialValue.description}</div>
               )}
 
+              {/*Sub Description */}
+              {isEditing ? (
+                <textarea
+                  className="form-control mb-4"
+                  value={initialValue.subDescription}
+                  onChange={(e) => updateField("description", e.target.value)}
+                />
+              ) : (
+                <div className="mb-4">{initialValue.subDescription}</div>
+              )}
+
               {/* Features */}
               <div className="row g-4 mb-4">
-                {initialValue.features.map((feature, idx) => (
+                {initialValue.features?.map((feature, idx) => (
                   <div key={idx} className={`col-md-${idx === 2 ? "12" : "6"}`}>
                     <div className="feature-item text-center">
                       <i className={`fas fa-${feature.icon} fa-3x mb-3`} />
@@ -126,11 +141,24 @@ export default function FeatureGrid({ backgroundColor,
                   />
                 </>
               ) : (
+                initialValue.cta !== undefined &&
                 <a href={initialValue.cta.url} className="btn btn-primary btn-lg">
                   {initialValue.cta.label}
                   <i className={`fas fa-${initialValue.cta.icon} ms-2`} />
                 </a>
               )}
+
+              {/* Benefits */}
+              <div className="row g-3">
+                {benefits?.list?.map((item, idx) => (
+                  <BenefitItem
+                    key={idx}
+                    item={item}
+                    icon={benefits.icon}
+                  />
+                ))}
+              </div>
+
             </div>
 
             {/* RIGHT IMAGE */}
@@ -162,3 +190,15 @@ export default function FeatureGrid({ backgroundColor,
     </>
   );
 }
+
+const BenefitItem = ({ item, icon }) => (
+  <div className="col-12">
+    <div className="d-flex align-items-start">
+      <i className={`fas fa-${icon.name} ${icon.class}`}></i>
+      <div>
+        <strong className="text-dark">{item.title}</strong>{" "}
+        <span className="text-muted">{item.text}</span>
+      </div>
+    </div>
+  </div>
+);

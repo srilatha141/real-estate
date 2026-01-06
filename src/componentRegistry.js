@@ -9,6 +9,11 @@ import Feedback from './components/Feedback';
 import ContactSection from './components/Contact';
 import FooterSection from './components/FooterSection';
 import UIWidgets from './components/UIWidgets';
+import About from './components/About';
+import PremiumServices from './components/PremiumServices';
+import DiscoveryCall from './components/DiscoveryCall';
+import GetStarted from './components/GetStarted';
+import PropertySearch from './components/PropertySearch';
 
 const componentRegistry = {
     'header': Header,
@@ -20,7 +25,12 @@ const componentRegistry = {
     'customer-feedback': Feedback,
     'contact-section': ContactSection,
     'footer-section': FooterSection,
-    'ui-widgets': UIWidgets
+    'ui-widgets': UIWidgets,
+    'about': About,
+    'premium-services': PremiumServices,
+    'discovery-call': DiscoveryCall,
+    'get-started': GetStarted,
+    'property-search': PropertySearch
 };
 
 export default componentRegistry;
