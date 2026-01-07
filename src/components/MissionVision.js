@@ -50,13 +50,24 @@ export default function MissionVisionSection({
 
   return (
     <>
-      {!isEditing ?
-        <button className='btn btn-primary' onClick={() => setEditing(true)}>Edit</button>
-        : <button onClick={() => { onChange(initialValue); setEditing(false) }} className='btn btn-primary'>Save</button>}
       <section
         className="mission-vision-section cms-section py-5"
         style={{ backgroundColor, color: textColor }}
       >
+        <div style={{ float: 'right', cursor: 'pointer' }}>
+          {!isEditing ?
+            <i
+              className="fas fa-edit text-primary cursor-pointer"
+              onClick={() => setEditing(true)}
+              title="Edit"
+            />
+            :
+            <i
+              className="fas fa-save text-success cursor-pointer"
+              onClick={() => { onChange(initialValue); setEditing(false) }}
+              title="Save"
+            />}
+        </div>
         <div className="container">
           <div className="row text-center mb-5">
             <div className="col-lg-8 mx-auto">

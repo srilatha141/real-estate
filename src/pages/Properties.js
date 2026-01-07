@@ -11,6 +11,7 @@ const propertiesPageData = {
                 subtitle: 'Discover your perfect property from our extensive collection',
                 alignment: 'center',
                 bg_color: '#f39c12',
+                buttons: []
             },
         },
         {

@@ -14,6 +14,7 @@ import PremiumServices from './components/PremiumServices';
 import DiscoveryCall from './components/DiscoveryCall';
 import GetStarted from './components/GetStarted';
 import PropertySearch from './components/PropertySearch';
+import ContactPage from './components/ContactPage';
 
 const componentRegistry = {
     'header': Header,
@@ -30,7 +31,8 @@ const componentRegistry = {
     'premium-services': PremiumServices,
     'discovery-call': DiscoveryCall,
     'get-started': GetStarted,
-    'property-search': PropertySearch
+    'property-search': PropertySearch,
+    'contact': ContactPage
 };
 
 export default componentRegistry;

@@ -21,8 +21,6 @@ export default function HeroFlexible({
     buttons,
   });
 
-  console.log('hfvbhfbv', initialValue)
-
   const handleFieldChange = (field, value) => {
     setInitialValue(prev => ({
       ...prev,
@@ -42,9 +40,6 @@ export default function HeroFlexible({
 
   return (
     <>
-      {!isEditing ?
-        <button className='btn btn-primary' onClick={() => setEditing(true)}>Edit</button>
-        : <button onClick={() => { onChange(initialValue); setEditing(false) }} className='btn btn-primary'>Save</button>}
       <section
         style={{
           backgroundImage: `url(${initialValue.bg_image})`,
@@ -57,6 +52,20 @@ export default function HeroFlexible({
           color: 'white',
         }}
       >
+        <div style={{ float: 'right', cursor: 'pointer' }}>
+          {!isEditing ?
+            <i
+              className="fas fa-edit text-primary cursor-pointer"
+              onClick={() => setEditing(true)}
+              title="Edit"
+            />
+            :
+            <i
+              className="fas fa-save text-success cursor-pointer"
+              onClick={() => { onChange(initialValue); setEditing(false) }}
+              title="Save"
+            />}
+        </div>
         {isEditing ? (
           <>
             <input
@@ -76,11 +85,12 @@ export default function HeroFlexible({
               value={initialValue.subtitle}
               onChange={(e) => handleFieldChange('subtitle', e.target.value)}
             />
+            {initialValue.subtitle1 !== undefined &&
             <input
               className="form-control mb-4"
               value={initialValue.subtitle1}
               onChange={(e) => handleFieldChange('subtitle1', e.target.value)}
-            />
+            />}
             {initialValue.buttons.map((btn, idx) => (
               <div key={idx} className="mb-3">
                 <input
@@ -97,7 +107,7 @@ export default function HeroFlexible({
             <p>{subtitle}</p>
             <p>{subtitle1}</p>
             <div>
-              {buttons?.map((btn, idx) => (
+              {buttons.length > 0 && buttons?.map((btn, idx) => (
                 <a key={idx} href={btn.url} className={`btn btn-${btn.variant} m-2`}>
                   {btn.label}
                 </a>

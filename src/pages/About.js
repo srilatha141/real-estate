@@ -11,6 +11,7 @@ const pageData = {
                 subtitle: 'Luxury Real Estate at Your Fingertips',
                 alignment: 'center',
                 bg_image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=2000&amp;q=80',
+                buttons: []
             },
         },
         {

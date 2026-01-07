@@ -30,13 +30,24 @@ export default function ContactSection({
 
   return (
     <>
-      {!isEditing ?
-        <button className='btn btn-primary' onClick={() => setEditing(true)}>Edit</button>
-        : <button onClick={() => { onChange(initialValue); setEditing(false) }} className='btn btn-primary'>Save</button>}
       <section
         className="contact-section cms-section py-5"
         style={{ backgroundColor: initialValue.backgroundColor, color: initialValue.textColor }}
       >
+        <div style={{ float: 'right', cursor: 'pointer' }}>
+          {!isEditing ?
+            <i
+              className="fas fa-edit text-primary cursor-pointer"
+              onClick={() => setEditing(true)}
+              title="Edit"
+            />
+            :
+            <i
+              className="fas fa-save text-success cursor-pointer"
+              onClick={() => { onChange(initialValue); setEditing(false) }}
+              title="Save"
+            />}
+        </div>
         <div className="container">
 
           {/* HEADER */}
@@ -73,27 +84,6 @@ export default function ContactSection({
           {/* FORM */}
           <div className="row justify-content-center">
             <div className="col-lg-8">
-
-              {/* FORM SETTINGS */}
-              {/* {isEditing && (
-                <div className="card p-3 mb-4">
-                  <h6 className="mb-2">Form Settings</h6>
-                  <input
-                    className="form-control mb-2"
-                    value={initialValue.form.action}
-                    onChange={(e) => updateForm("action", e.target.value)}
-                    placeholder="Form action URL"
-                  />
-                  <select
-                    className="form-control"
-                    value={initialValue.form.method}
-                    onChange={(e) => updateForm("method", e.target.value)}
-                  >
-                    <option value="POST">POST</option>
-                    <option value="GET">GET</option>
-                  </select>
-                </div>
-              )} */}
 
               <form
                 className="contact-form"
