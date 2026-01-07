@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 export default function HeaderSection({ background, logo, navLinks, cta, themeToggle }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [hover, setHover] = useState(false);
 
   return (
     <header
@@ -9,9 +10,9 @@ export default function HeaderSection({ background, logo, navLinks, cta, themeTo
       className="header py-3 d-flex align-items-center fixed-top"
       style={{ background }}
     >
-      <div style={{height: '38px'}} className="container-xxl px-lg-5 position-relative d-flex align-items-center justify-content-between">
+      <div style={{ height: '38px' }} className="container-xxl px-lg-5 position-relative d-flex align-items-center justify-content-between">
         <div>
-          <a href={logo.url} style={{textDecoration: 'none'}} className="logo d-flex align-items-center mx-auto mx-lg-0">
+          <a href={logo.url} style={{ textDecoration: 'none' }} className="logo d-flex align-items-center mx-auto mx-lg-0">
             <span className="h4 mb-0 fw-bold" style={{ color: logo.textColor }}>
               {logo.text}
             </span>
@@ -32,25 +33,25 @@ export default function HeaderSection({ background, logo, navLinks, cta, themeTo
           <i className="mobile-nav-toggle d-inline-block d-lg-none fa fa-bars"></i>
         </nav> */}
         <nav id="navmenu" className={`navbar ms-auto ${isOpen ? "open" : ""}`}>
-      <ul>
-        {navLinks.map((link, idx) => (
-          <li key={idx}>
-            <a href={link.url} onClick={() => setIsOpen(false)}>
-              {link.icon && (
-                <i className={`fas fa-${link.icon} me-1`}></i>
-              )}
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+          <ul>
+            {navLinks.map((link, idx) => (
+              <li key={idx}>
+                <a href={link.url} onClick={() => setIsOpen(false)}>
+                  {link.icon && (
+                    <i className={`fas fa-${link.icon} me-1`}></i>
+                  )}
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-      {/* Mobile Toggle */}
-      <i
-        className="mobile-nav-toggle d-inline-block d-lg-none fa fa-bars"
-        onClick={() => setIsOpen(!isOpen)}
-      ></i>
-    </nav>
+          {/* Mobile Toggle */}
+          <i
+            className="mobile-nav-toggle d-inline-block d-lg-none fa fa-bars"
+            onClick={() => setIsOpen(!isOpen)}
+          ></i>
+        </nav>
 
         <div className="d-none d-lg-flex align-items-center">
           {themeToggle?.enabled && (
@@ -58,7 +59,12 @@ export default function HeaderSection({ background, logo, navLinks, cta, themeTo
               <i className={`bi bi-${themeToggle.icon}`}></i>
             </button>
           )}
-          <a className={`btn btn-${cta.variant}`} href={cta.url}>
+          <a
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            className={`btn btn-${cta.variant}`} href={cta.url}
+            style={{ backgroundColor: hover ? '#f39c12' : '#2c3e50', borderColor: hover ? '#f39c12': '#2c3e50' }}
+          >
             {cta.label}
           </a>
         </div>
